@@ -145,7 +145,7 @@ func (*Analyzer) Analyze(_ context.Context, in *analyzer.Input) (*analyzer.Resul
 		}
 		fs = append(fs, finding.Finding{
 			Dimension: finding.DimTrust, Category: "dead-cta", Severity: sev, Confidence: conf,
-			Title:                 fmt.Sprintf("%d call-to-action button(s) lead nowhere", len(dead)),
+			Title:                 fmt.Sprintf("%d call-to-action button%s lead%s nowhere", len(dead), map[bool]string{true: "", false: "s"}[len(dead) == 1], map[bool]string{true: "s", false: ""}[len(dead) == 1]),
 			Description:           "Buttons such as \"Get started\" or \"Sign up\" link to \"#\" or to nothing. On a generated site this usually means the button was never wired up.",
 			Evidence:              dead,
 			Impact:                &finding.Impact{Buyer: finding.BuyerSupportCost},

@@ -1,0 +1,19 @@
+id: links
+name: Links & Calls to Action
+version: 0.1.0
+category: trust
+summary: Checks that a website's same-site links work (the pages read plus up to 15 more links from the front page, recorded by the Website Snapshot) and finds calls to action - Get started, Sign up, Buy, Contact - that lead nowhere. Feeds the Finish question of the verdict.
+stability: experimental
+core_api: v0
+targets: [website]
+requires: [web-snapshot]
+provides: [links]
+findings: [broken-link, dead-cta]
+scores: []
+cost: low
+execution:
+  local: true
+  network: none
+  ai: none
+privacy: Uses only the link checks and pages already recorded by the Website Snapshot. It makes no requests of its own.
+methodology: https://github.com/capybari-repo/capybari-analyzer-links/blob/main/docs/methodology.md
